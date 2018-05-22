@@ -1,0 +1,21 @@
+Server:
+  ☐ Create POST for url
+    Should:
+      ☐ Put URL in database with status pending
+      ☐ Send user back jobID
+  ☐ Create GET for jobID status
+      ☐ Fetches jobID from DB
+      If complete:
+        ☐ Sends HTML
+      Else:
+        Sends status
+
+Database:
+  ☐ Initialize DB
+  ☐ Table - Jobs
+    Structure:
+      JOBID | URL | Status | HTML
+
+Workers:
+  ☐ Periodically fetch URLs from DB
+  ☐ If URL does not have HTML, fetch HTML, update DB
