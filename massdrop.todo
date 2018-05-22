@@ -3,6 +3,11 @@ Server:
     Should:
       ☐ Put URL in database with status pending
       ☐ Send user back jobID
+    Handling:
+      ☐ Duplicate postings
+      ☐ Invalid urls
+      ☐ Sanitize inputs?
+      ☐ Normalize structure - http://? www?
   ☐ Create GET for jobID status
       ☐ Fetches jobID from DB
       If complete:
