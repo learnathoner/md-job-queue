@@ -1,11 +1,15 @@
 const Sequelize = require('sequelize');
 
+require('dotenv').config();
+
+console.log(process.env.PG_HOST);
+
 // TODO: Create DB if not exists
-const database = 'Mike';
+const database = process.env.PG_DATABASE;
 const sequelize = new Sequelize({
   database,
-  host: process.env.PGHOST,
-  username: process.env.PGUSER,
+  host: process.env.PG_HOST,
+  username: process.env.PG_USER,
   password: null,
   dialect: 'postgres',
 });
