@@ -5,7 +5,7 @@ const { sequelize: db } = require('./index');
 const Job = db.define('job', {
   url: { type: Sequelize.STRING, unique: true, allowNull: false },
   status: { type: Sequelize.STRING, allowNull: false },
-  html: { type: Sequelize.STRING, allowNull: true },
+  html: { type: Sequelize.TEXT, allowNull: true },
 });
 
 db.sync();

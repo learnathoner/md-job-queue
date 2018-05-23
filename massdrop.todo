@@ -1,26 +1,32 @@
 Server:
-  ☐ Create POST for url
+  ✔ Create POST for url @done (2018-5-22 16:45:10)
     Should:
-      ☐ Put URL in database with status pending
-      ☐ Send user back jobID
+      ✔ Put URL in database with status pending @done (2018-5-22 16:45:10)
+      ✔ Send user back jobID @done (2018-5-22 16:45:12)
     Handling:
       ☐ Duplicate postings
       ☐ Invalid urls
       ☐ Sanitize inputs?
-      ☐ Normalize structure - http://? www?
-  ☐ Create GET for jobID status
-      ☐ Fetches jobID from DB
+      ☐ Normalize structure - http://? www? google.com?
+  ✔ Create GET for jobID status @done (2018-5-22 16:59:09)
+      ✔ Fetches jobID from DB @done (2018-5-22 16:59:10)
+      ☐ Better to send all info, or ONLY html / status? @low
       If complete:
-        ☐ Sends HTML
+        ✔ Sends HTML @done (2018-5-22 16:59:13)
       Else:
-        Sends status
+        ✔ Sends status @done (2018-5-22 16:59:19)
 
 Database:
-  ☐ Initialize DB
-  ☐ Table - Jobs
+  ✔ Initialize DB @done (2018-5-22 17:04:01)
+  ✔ Table - Jobs @done (2018-5-22 17:04:02)
     Structure:
-      JOBID | URL | Status | HTML
+      ✔ JOBID | URL | Status | HTML @done (2018-5-22 17:04:06)
 
 Workers:
   ☐ Periodically fetch URLs from DB
   ☐ If URL does not have HTML, fetch HTML, update DB
+
+Readme:
+  ☐ Create readme
+  ☐ Detail basic use
+  ☐ Detail edge cases
