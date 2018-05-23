@@ -1,5 +1,6 @@
 /**
- * Addresses one edge case: if url www.____, adds http:// to it
+ * Currently addresses one edge case:
+ *  If url www.____, adds http:// to it
  *  TODO: More edge cases needed, sanitizing input
  * @param {string} url
  *

@@ -3,7 +3,7 @@ const { sequelize: db } = require('./index');
 const { Job } = require('./Models');
 
 /**
- * Takes URL string, either adds to table with 'pending status' or fetches id
+ * Adds URL to table with 'pending' status if new, returns jobID
  * @param {string} url
  *
  * @return {number} jobID

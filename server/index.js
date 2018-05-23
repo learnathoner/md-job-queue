@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 /**
- * ========= ROUTES ========
+ * ========= Endpoints ========
  *
  * POST /jobs - Post new job
  * GET /jobs/:id - Get job info by id
@@ -49,7 +49,7 @@ app.get('/*', (req, res) => {
   res.status(404).send('Not a valid endpoint');
 });
 
-// Starts service worker with a 2000ms interval
+// *** Starts service worker with a 2000ms interval ***
 startWorker(2000);
 
 const port = process.env.PORT || 3000;

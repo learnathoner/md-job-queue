@@ -23,11 +23,11 @@ Database:
       ✔ JOBID | URL | Status | HTML @done (2018-5-22 17:04:06)
 
 Workers:
-  ☐ Periodically fetch URLs from DB
-  ☐ If URL does not have HTML, fetch HTML, update DB
+  ✔ Periodically fetch URLs from DB @done (2018-5-22 20:16:58)
+  ✔ If URL does not have HTML, fetch HTML, update DB @done (2018-5-22 20:16:59)
 
 Readme:
   ✔ Create readme @done (2018-5-22 20:00:10)
   ✔ Detail basic use @done (2018-5-22 20:00:11)
-  ☐ Detail edge cases
-  ☐ .env variables: PORT
+  ✔ Detail edge cases @done (2018-5-22 20:17:08)
+  ✔ .env variablesß @done (2018-5-22 20:17:06)

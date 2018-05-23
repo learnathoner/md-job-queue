@@ -1,6 +1,9 @@
 const request = require('request-promise');
 const { fetchPendingJobsFromDatabase, updateJobInDatabse } = require('../database/Queries');
 
+/**
+ * When called, goes through every 'pending' job, gets HTML for them
+ */
 const worker = async () => {
   const pendingJobs = await fetchPendingJobsFromDatabase();
 
@@ -28,14 +31,23 @@ const worker = async () => {
   }
 };
 
+// Necessary to give outer scope for clearInterval
 let timer;
 
+/**
+ * Sets worker to get HTML at given time
+ * @param {number} time (ms)
+ */
 const startWorker = (time) => {
   timer = setInterval(worker, time);
 };
 
+/**
+ * Stops worker
+ */
 const stopWorker = () => {
   clearInterval(timer);
+  timer = null;
 };
 
 module.exports = {
