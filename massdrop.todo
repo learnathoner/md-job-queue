@@ -27,6 +27,7 @@ Workers:
   ☐ If URL does not have HTML, fetch HTML, update DB
 
 Readme:
-  ☐ Create readme
-  ☐ Detail basic use
+  ✔ Create readme @done (2018-5-22 20:00:10)
+  ✔ Detail basic use @done (2018-5-22 20:00:11)
   ☐ Detail edge cases
+  ☐ .env variables: PORT

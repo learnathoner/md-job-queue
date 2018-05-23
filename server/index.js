@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const { sequelize: db } = require('../database/index');
 const { addJobToDatabase, fetchJobFromDatabase } = require('../database/Queries');
 const { startWorker, stopWorker } = require('../utils/worker');
+const { formatUrl } = require('../utils/helpers');
 
 const app = express();
 
@@ -11,49 +12,47 @@ app.use(bodyParser.urlencoded({
   extended: false,
 }));
 
-app.get('/test-stop', (req, res) => {
-  console.log('running stoo');
-  stopWorker();
-});
-
 /**
- * Post new job
- * @param {Object} req.body - contains JSON { url: jobURL }
+ * ========= ROUTES ========
  *
- * @return {string} jobID
+ * POST /jobs - Post new job
+ * GET /jobs/:id - Get job info by id
+ *
+ * =========================
  */
+
 app.post('/jobs', async (req, res) => {
-  let { url } = req.body;
-  const checkUrlRegex = /^www.\S+/g;
+  const { url } = req.body;
+  const formattedUrl = formatUrl(url);
 
-  if (checkUrlRegex.test(url)) {
-    url = `http://${url}`;
+  const jobID = await addJobToDatabase(formattedUrl);
+
+  if (jobID) {
+    res.status(200).send(String(jobID));
+  } else {
+    res.status(400).send('ID could not be added');
   }
-  // TODO: Check if url valid input. Normalize url structure?
-  const jobID = await addJobToDatabase(url);
-  // Error handling
-  res.status(200).send(String(jobID));
 });
 
-/**
- * Get job by id
- * @param {number} query:id - jobID
- *
- * @return {Object} job - JSON with { id: , status: , html: }
- */
 app.get('/jobs/:id', async (req, res) => {
   const { id } = req.params;
   const job = await fetchJobFromDatabase(id);
-  res.status(200).send(job);
+
+  if (job) {
+    res.status(200).send(job);
+  } else {
+    res.status(400).send('Job ID not found');
+  }
 });
 
 app.get('/*', (req, res) => {
   res.status(404).send('Not a valid endpoint');
 });
 
-const port = process.env.PORT || 3000;
-
+// Starts service worker with a 2000ms interval
 startWorker(2000);
+
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log('listening on port 3000!');
