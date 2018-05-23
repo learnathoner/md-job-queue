@@ -12,6 +12,8 @@ const formatUrl = (url) => {
   if (checkUrlRegex.test(url)) {
     url = `http://${url}`;
   }
+
+  return url;
 };
 
 module.exports = {

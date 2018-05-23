@@ -11,6 +11,7 @@ const Job = db.define('job', {
   html: { type: Sequelize.TEXT, allowNull: true },
 });
 
+// Creates tables if not available
 db.sync();
 
 module.exports = {
